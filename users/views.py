@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import RegisterForm
 
 # Create your views here.
 
@@ -39,3 +40,17 @@ def shop(request):
 
 def wishlist(request):
     return render(request, 'wishlist.html')
+
+
+def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            # Form to'g'ri bo'lsa — foydalanuvchi yaratish logikasi
+            return redirect('login')  # yoki boshqa sahifaga yo'naltirish
+        else:
+            # Form xatoliklari bilan sahifani qayta chizish
+            return render(request, 'auth/register.html', {'form': form})
+    else:
+        form = RegisterForm()
+    return render(request, 'auth/register.html', {'form': form})
