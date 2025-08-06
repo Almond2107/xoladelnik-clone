@@ -54,9 +54,6 @@ pythonenv/
 *.swp
 *.swo
 
-# Static files
-/staticfiles/
-/static/
 
 # Node.js
 node_modules/
