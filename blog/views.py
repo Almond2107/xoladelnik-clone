@@ -1,6 +1,9 @@
 from rest_framework import generics, permissions
 from .models import BlogPost, BlogCategory, Tag, Comment
 from blog.serializer.blog import BlogPostSerializer, BlogCategorySerializer, TagSerializer, CommentSerializer
+from django.shortcuts import render, get_object_or_404
+
+
 
 # ----------------- BlogPost -----------------
 class BlogPostListCreateAPIView(generics.ListCreateAPIView):

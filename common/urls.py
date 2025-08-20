@@ -1,7 +1,7 @@
 from django.urls import path
-
-from . import views
+from .views import SponsorListCreateView, SponsorRetrieveUpdateDestroyView
 
 urlpatterns = [
-    path("", views.index, name="home"),
+    path("sponsors/", SponsorListCreateView.as_view(), name="sponsor-list-create"),
+    path("sponsors/<int:pk>/", SponsorRetrieveUpdateDestroyView.as_view(), name="sponsor-detail"),
 ]

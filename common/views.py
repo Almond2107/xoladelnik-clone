@@ -1,5 +1,13 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Sponsor
+from .serializers import SponsorSerializer
 
 
-def index(request):
-    return render(request, "index.html")
+class SponsorListCreateView(generics.ListCreateAPIView):
+    queryset = Sponsor.objects.all()
+    serializer_class = SponsorSerializer
+
+
+class SponsorRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Sponsor.objects.all()
+    serializer_class = SponsorSerializer
